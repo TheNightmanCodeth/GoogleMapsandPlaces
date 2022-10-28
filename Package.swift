@@ -5,11 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "GoogleMapsandPlaces",
+    platforms: [.iOS(.v15)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "GoogleMapsandPlaces",
-            targets: ["GoogleMapsandPlaces"]),
+            targets: ["GoogleMapsandPlaces", "GoogleMaps", "GoogleMapsCore", "GoogleMapsBase", "GooglePlaces"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -21,6 +22,10 @@ let package = Package(
         .target(
             name: "GoogleMapsandPlaces",
             dependencies: []),
+        .binaryTarget(name: "GoogleMaps", path: "Resources/GoogleMaps.xcframework"),
+        .binaryTarget(name: "GoogleMapsCore", path: "Resources/GoogleMapsCore.xcframework"),
+        .binaryTarget(name: "GoogleMapsBase", path: "Resources/GoogleMapsBase.xcframework"),
+        .binaryTarget(name: "GooglePlaces", path: "Resources/GooglePlaces.xcframework"),
         .testTarget(
             name: "GoogleMapsandPlacesTests",
             dependencies: ["GoogleMapsandPlaces"]),
